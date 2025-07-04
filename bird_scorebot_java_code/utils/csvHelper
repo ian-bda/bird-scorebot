@@ -1,0 +1,43 @@
+const fs = require('fs');
+const csv = require('csv-parser');
+
+let birdData = {};
+let speciesList = [];
+
+function loadBirdData() {
+  return new Promise((resolve, reject) => {
+    const results = [];
+    fs.createReadStream('./species.csv')
+      .pipe(csv())
+      .on('data', (data) => results.push(data))
+      .on('end', () => {
+        results.forEach(row => {
+          const species = row['Species'].toLowerCase();
+          birdData[species] = {
+            na: parseInt(row['North America']),
+            sa: parseInt(row['South America']),
+            africa: parseInt(row['Africa']),
+            asia: parseInt(row['Asia']),
+            europe: parseInt(row['Europe']),
+            oceania: parseInt(row['Oceania'])
+          };
+        });
+        speciesList = Object.keys(birdData); // cache species list for autocomplete
+        resolve(birdData);
+      })
+      .on('error', reject);
+  });
+}
+
+function getSpeciesScore(speciesName, placeCode) {
+  const species = birdData[speciesName.toLowerCase()];
+  if (!species) return null;
+  return species[placeCode];
+}
+
+function getAllSpecies() {
+  return speciesList;
+}
+
+module.exports = { loadBirdData, getSpeciesScore, getAllSpecies };
+
