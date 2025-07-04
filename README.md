@@ -1,4 +1,4 @@
-# bird_league_rank_bot
+# bird_scorebot
 This repository contans scripts in which I expanded the American Birding Assocation's rankings from around 2,000 species in just North Amercia to 11,000 globally and then made a discord bot to add and keep track of people's scores for a birding league.
 
 ---
