@@ -3,8 +3,6 @@ This repository contans scripts in which I expanded the American Birding Assocat
 
 ---
 
-## Step 1 Expand Rankings
-
 ### `species_rank_by_continent.py`
 
 **Purpose:**  
