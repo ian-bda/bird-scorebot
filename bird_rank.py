@@ -1,5 +1,5 @@
 #written by Ian Birchler De Allende 06/28/25
-#uses 5 representative countries per continent
+#uses all representative countries per continent
 #loops weekly over the whole year (2024)
 #for each week, aggregates observations across all 5 countries in the continent
 #computes rarity ranks 1–6 by number of weeks seen in the year
@@ -11,17 +11,41 @@ from tqdm import tqdm
 from collections import Counter
 from datetime import datetime, timedelta
 
-API_KEY = "xxxxxx"  # blacked out API
+API_KEY = "xxxx"  # blacked out API
 
 # Representative countries per continent (ISO codes)
 continent_regions = {
-    "Africa": ["KE", "ZA", "NG", "EG", "TZ"],
-    "Asia": ["IN", "CN", "JP", "TH", "ID"],
-    "Europe": ["FR", "DE", "ES", "IT", "SE"],
-    "North America": ["US", "CA", "MX", "GT", "CU"],
-    "South America": ["BR", "AR", "CO", "PE", "CL"],
-    "Oceania": ["AU", "NZ", "FJ", "PG", "NC"]
+    "Africa": [
+        "DZ", "AO", "BJ", "BW", "BF", "BI", "CM", "CV", "CF", "TD", "KM", "CD", "DJ",
+        "EG", "GQ", "ER", "SZ", "ET", "GA", "GM", "GH", "GN", "GW", "CI", "KE", "LS",
+        "LR", "LY", "MG", "MW", "ML", "MR", "MU", "MA", "MZ", "NA", "NE", "NG", "RW",
+        "ST", "SN", "SC", "SL", "SO", "ZA", "SS", "SD", "TZ", "TG", "TN", "UG", "ZM", "ZW"
+    ],
+    "Asia": [
+        "AF", "AM", "AZ", "BH", "BD", "BT", "BN", "KH", "CN", "CY", "GE", "IN", "ID",
+        "IR", "IQ", "IL", "JP", "JO", "KZ", "KW", "KG", "LA", "LB", "MY", "MV", "MN",
+        "MM", "NP", "KP", "OM", "PK", "PS", "PH", "QA", "SA", "SG", "KR", "LK", "SY",
+        "TW", "TJ", "TH", "TL", "TR", "TM", "AE", "UZ", "VN", "YE"
+    ],
+    "Europe": [
+        "AL", "AD", "AT", "BY", "BE", "BA", "BG", "HR", "CY", "CZ", "DK", "EE", "FI",
+        "FR", "DE", "GR", "HU", "IS", "IE", "IT", "XK", "LV", "LI", "LT", "LU", "MT",
+        "MD", "MC", "ME", "NL", "MK", "NO", "PL", "PT", "RO", "RU", "SM", "RS", "SK",
+        "SI", "ES", "SE", "CH", "UA", "GB", "VA"
+    ],
+    "North America": [
+        "AG", "BS", "BB", "BZ", "CA", "CR", "CU", "DM", "DO", "SV", "GD", "GT", "HT",
+        "HN", "JM", "MX", "NI", "PA", "KN", "LC", "VC", "TT", "US"
+    ],
+    "South America": [
+    "AR", "BO", "BR", "CL", "CO", "EC", "EC-G", "GY", "PY", "PE", "SR", "UY", "VE"
+    ],   
+    "Oceania": [
+        "AU", "FJ", "KI", "MH", "FM", "NR", "NZ", "PW", "PG", "WS", "SB", "TO", "TV",
+        "VU"
+    ]
 }
+
 
 # Year to analyze
 year = 2024
@@ -137,8 +161,8 @@ def main():
         rows.append(row)
 
     df = pd.DataFrame(rows)
-    df.to_csv("species_rarity_by_continent_yearly.csv", index=False)
-    print("CSV created: species_rarity_by_continent_yearly.csv")
+    df.to_csv("species_rarity_by_continent_yearly_2.csv", index=False)
+    print("CSV created: species_rarity_by_continent_yearly_2.csv")
 
 if __name__ == "__main__":
     main()
