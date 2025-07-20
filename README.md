@@ -10,7 +10,7 @@ Fetches yearly eBird observations using ebird's API (https://documenter.getpostm
 
 **Details:**
 - Uses the `/historic/{y}/{m}/{d}` eBird API endpoint to get species seen weekly across the entire year (2023).
-- Aggregates data for each continent using **5 representative countries** to ensure balanced sampling.
+- Aggregates data for each continent using **all representative countries** to ensure balanced sampling.
 - Ranks each species by how many weeks it was observed:
   - **1** = very common (≥40 weeks/year)
   - **2** = fairly common (≥20 weeks)
