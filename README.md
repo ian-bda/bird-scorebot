@@ -3,7 +3,7 @@ This repository contans scripts in which I expanded the American Birding Assocat
 
 ---
 
-### `species_rank_by_continent.py`
+### `bird_rank.py`
 
 **Purpose:**  
 Fetches yearly eBird observations using ebird's API (https://documenter.getpostman.com/view/664302/S1ENwy59?version=latest) for thousands of bird species across multiple continents, then ranks each species from 1–6 per continent based on how often it was observed.
